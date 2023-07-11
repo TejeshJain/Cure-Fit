@@ -17,7 +17,7 @@ import {
 // Get current doctors profile
 export const getCurrentProfile = () => async dispatch => {
     try {
-        const res = await axios.get('/api/profile/me');
+        const res = await axios.get('https://curefit.onrender.com/api/profile/me');
         dispatch({
             type: GET_PROFILE,
             payload: res.data
@@ -33,7 +33,7 @@ export const getCurrentProfile = () => async dispatch => {
 // Get all profiles
 export const getProfiles = () => async dispatch => {
     try {
-        const res = await axios.get('/api/profile');
+        const res = await axios.get('https://curefit.onrender.com/api/profile');
 
         dispatch({
             type: GET_PROFILES,
@@ -50,7 +50,7 @@ export const getProfiles = () => async dispatch => {
 // Get profiles by doctor id
 export const getProfileById = doctorId => async dispatch => {
     try {
-        const res = await axios.get(`/api/profile/doctor/${doctorId}`);        
+        const res = await axios.get(`https://curefit.onrender.com/api/profile/doctor/${doctorId}`);        
         dispatch({
             type: GET_PROFILE_BY_ID,
             payload: res.data
@@ -192,7 +192,7 @@ export const addReview = (doctorId, formData) => async dispatch => {
         }
     };
     try {
-        const res = await axios.post(`/api/profile/doctor/:${doctorId}`, formData, config);
+        const res = await axios.post(`https://curefit.onrender.com/api/profile/doctor/:${doctorId}`, formData, config);
         dispatch({
             type: ADD_REVIEW,
             payload: res.data
@@ -210,7 +210,7 @@ export const addReview = (doctorId, formData) => async dispatch => {
 // Delete Review
 export const deleteReview = (doctorId, reviewId) => async dispatch => {
     try {
-         await axios.delete(`/api/profile/doctor/${doctorId}/${reviewId}`);
+         await axios.delete(`https://curefit.onrender.com/api/profile/doctor/${doctorId}/${reviewId}`);
         
         dispatch({
             type: REMOVE_REVIEW,
@@ -230,7 +230,7 @@ export const deleteReview = (doctorId, reviewId) => async dispatch => {
 export const deleteAccount = () => async dispatch => {
     if(window.confirm('Are you sure? this can not be undone!')) {
         try {
-            await axios.delete('/api/profile');
+            await axios.delete('https://curefit.onrender.com/api/profile');
     
             dispatch({
                 type: CLEAR_PROFILE
